@@ -8,9 +8,11 @@ const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 // Middleware
 app.use(express.json());
-app.use(cors()); 
+app.use(cors());
+ 
   
 const menuRoutes=require('./routes/menu');
+const kotRoutes = require("./routes/kot");
 const reservationsRouter = require('./routes/reservations'); 
 const customersRoutes = require('./routes/customers');
 const categoryRoutes = require('./routes/category');
@@ -25,6 +27,7 @@ app.use("/api/customers", customersRoutes); // ✅ Now it works!
 app.use('/api', categoryRoutes);
 app.use('/api', dishRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/kots", kotRoutes);
 app.use(notFoundHandler);
 
 // Use the menu routes

@@ -30,7 +30,7 @@ const ItemsPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/categories")
+        const response = await axios.get("http://localhost:5002/api/categories")
         const sorted = response.data.sort((a, b) => (a.name === "Recommended" ? -1 : b.name === "Recommended" ? 1 : 0))
         // Add "All" category at the beginning
         const allCategory = { id: "all", name: "All" }
@@ -47,7 +47,7 @@ const ItemsPage = () => {
   useEffect(() => {
     const fetchAllDishes = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/dishes")
+        const response = await axios.get("http://localhost:5002/api/dishes")
         setAllDishes(response.data)
         console.log("All dishes fetched:", response.data) // ✅ check this
       } catch (error) {
@@ -68,7 +68,7 @@ const ItemsPage = () => {
 
     const fetchDishes = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/dishes/category/${selectedCategory}`)
+        const response = await axios.get(`http://localhost:5002/api/dishes/category/${selectedCategory}`)
         setDishes(response.data)
       } catch (error) {
         console.error("Failed to fetch dishes:", error)

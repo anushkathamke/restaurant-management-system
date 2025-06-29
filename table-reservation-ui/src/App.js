@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ItemsPage from "./pages/ItemsPage";
 import OrdersPage from "./pages/OrdersPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import KOTScreen from "./pages/KOTScreen";
 import "./index.css";
 import { CartProvider } from "./context/CartContext";
 
@@ -30,8 +31,8 @@ function AppContent() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            
             <Route path="/items" element={<ItemsPage />} />
+            <Route path="/kot" element={<KOTScreen />} />
 
             {/* Orders Page */}
             <Route path="/orders" element={<OrdersPage />} />

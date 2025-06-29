@@ -38,7 +38,7 @@ const OrderTypeToggle = ({
     const fetchNewOrderNumber = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/orders/new-order-number"
+          "http://localhost:5002/api/orders/new-order-number"
         )
         const result = await response.json()
 
@@ -57,7 +57,7 @@ const OrderTypeToggle = ({
 
   const saveCustomerToBackend = async (name, phone, address) => {
     try {
-      const response = await fetch("http://localhost:5000/api/customers", {
+      const response = await fetch("http://localhost:5002/api/customers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, address }),
@@ -77,7 +77,7 @@ const OrderTypeToggle = ({
     try {
       if (!mobile.trim()) return
       const res = await fetch(
-        `http://localhost:5000/api/customers/by-phone?phone=${encodeURIComponent(
+        `http://localhost:5002/api/customers/by-phone?phone=${encodeURIComponent(
           mobile
         )}`
       )

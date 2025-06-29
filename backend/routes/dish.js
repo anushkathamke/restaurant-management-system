@@ -51,14 +51,29 @@ router.post('/dishes', async (req, res) => {
 
 // Fetch dishes by category
 router.get('/dishes/category/:category_id', async (req, res) => {
+  const { category_id } = req.params;
+
   try {
-    const { category_id } = req.params;
-    const result = await pool.query(
-      `SELECT * FROM dishes WHERE category_id = $1`,
-      [category_id]
-    );
+    let result;
+
+    if (category_id === 'all') {
+      // Fetch all dishes
+      result = await pool.query('SELECT * FROM dishes ORDER BY name');
+    } else {
+      const catId = parseInt(category_id);
+      if (isNaN(catId)) {
+        return res.status(400).json({ error: 'Invalid category ID' });
+      }
+
+      result = await pool.query(
+        'SELECT * FROM dishes WHERE category_id = $1 ORDER BY name',
+        [catId]
+      );
+    }
+
     res.json(result.rows);
   } catch (error) {
+    console.error('DB error:', error);
     res.status(500).json({ message: 'Error fetching dishes for category', error });
   }
 });

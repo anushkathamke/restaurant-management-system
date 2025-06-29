@@ -391,32 +391,45 @@ input[type="text"] {
 }
 
 .legend {
-  padding: 5px 10px;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
   font-size: 12px;
-  font-weight: bold;
-  color: white;
+  margin-right: 6px;
+  gap: 4px;
 }
 
-.legend.blank {
-  background-color: #d9d9d9;
+.legend::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.legend.running {
-  background-color: #007bff;
+/* Status-based colors */
+.blank::before {
+  background-color: #d3d3d3; /* Light Gray */
 }
 
-.legend.printed {
-  background-color: #28a745;
+.running::before {
+  background-color: #007bff; /* Blue */
 }
 
-.legend.paid {
-  background-color: #ffc107;
+.printed::before {
+  background-color: #28a745; /* Green */
 }
 
-.legend.kot {
-  background-color: #ff4d4f;
+.paid::before {
+  background-color: #ffc107; /* Yellow */
 }
+
+.kot::before {
+  background-color: #dc3545; /* Red */
+}
+
+
+
 
 /* Table Grid Section */
 .table-grid {

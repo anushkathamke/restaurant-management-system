@@ -13,7 +13,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch("http://localhost:5000/api/orders")
+      const res = await fetch("http://localhost:5002/api/orders")
       const data = await res.json()
       setOrders(data)
     }
